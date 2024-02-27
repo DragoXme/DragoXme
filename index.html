@@ -3,114 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
+    <title>DragoXme</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
+        * {
+            transition: all 0.5s;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #1f2937; /* dark blue background */
-            color: #ffffff; /* white text color */
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             overflow: hidden;
+            background: radial-gradient(circle, #000033, #000000) no-repeat center center fixed;
+            background-size: cover;
+            user-select: none;
+            -webkit-user-select: none; /* For Safari */
+            -moz-user-select: none; /* For Firefox */
+            -ms-user-select: none;
         }
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000000; /* black background */
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 1;
-            transition: opacity 1s ease-out;
-        }
-        #loader.fadeOut {
-            opacity: 0;
-            pointer-events: none;
-        }
-        #loader-content {
-            text-align: center;
-        }
-        #loader-content h2 {
-            font-size: 48px;
-            margin: 0;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
-        #loader-content img {
-            width: 200px;
+        img.pic {
             height: 200px;
+            width: auto;
             border-radius: 50%;
-            border: 8px solid #ffffff; /* white border around image */
+            border: 5px solid #471b8e;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -70%);
             opacity: 0;
-            animation: appear 1s forwards 2s;
+            transition: all 1s;
+            display: none;
         }
-        #name {
-            opacity: 0;
-            animation: slideIn 1s forwards 3s;
-            position: relative;
-            bottom: -30px;
-            color: transparent;
-            background: linear-gradient(90deg, #1f2937, #6d28d9);
-            -webkit-background-clip: text;
-            background-clip: text;
+        div.message {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 13vh;
+        color: transparent;
+        background: radial-gradient(circle, #59a3ed, #471b8e);
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: moveGradient 2s linear infinite alternate;
+        background-size: 150% 100%;
+        opacity: 0;
+    }
+
+    @keyframes moveGradient {
+        0% {
+            background-position: 100% 50%;
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        100% {
+            background-position: 0% 50%;
         }
-        @keyframes appear {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                bottom: -30px;
-            }
-            to {
-                opacity: 1;
-                bottom: 0;
-            }
-        }
+    }
+    div.nam {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 7vh;
+        color: transparent;
+        background: radial-gradient(circle, #59a3ed, #471b8e);
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: moveGradient 2s linear infinite alternate;
+        background-size: 150% 100%;
+        opacity: 0;
+        transition: all 1s;
+    }
     </style>
 </head>
-<body>
 
-<div id="loader">
-    <div id="loader-content">
-        <h2>Hi</h2>
-        <h2>It's me</h2>
-        <img src="pic.png" alt="Profile Picture">
-        <h1 id="name">DragoXme</h1>
-    </div>
-</div>
+<body id="body">
+
+<div id="msg" class="message"></div>
+<img id="profilePic" class="pic" src="pic.png" draggable="false" contextmenu="false">
+<div id="name" class="nam">DragoXme</div>
 
 <script>
-    window.onload = function() {
-        var loader = document.getElementById('loader');
-        setTimeout(function() {
-            loader.classList.add('fadeOut');
-        }, 4000); // Adjust timing as needed
-    };
-</script>
+var msgElement = document.getElementById('msg');
+var textValues = ["Hi", "it's me"];
+var picElement = document.getElementById('profilePic');
+var nameElement = document.getElementById('name');
+var bodyElement = document.getElementById('body');
 
+function displayText() {
+    setTimeout(function() {
+        msgElement.textContent = textValues[0];
+        msgElement.style.transition = "all 1s";
+        msgElement.style.opacity = 1;
+    }, 1000);
+
+    setTimeout(function() {
+        msgElement.style.opacity = 0;
+    }, 3000);
+
+    setTimeout(function() {
+        msgElement.textContent = textValues[1];
+        msgElement.style.opacity = 1;
+    }, 5000);
+    setTimeout(function() {
+        msgElement.style.opacity = 0;
+        picElement.style.display = "block";
+    }, 7000);
+    setTimeout(function() {
+        msgElement.style.display = "none";
+        picElement.style.transform = "translate(-50%, -50%)";
+        picElement.style.opacity = 1;
+    }, 9000);
+    setTimeout(function() {
+        picElement.style.transform = "translate(-50%, -90%)";
+        picElement.style.border = "5px solid #59a3ed"
+        nameElement.style.opacity = 1;
+        nameElement.style.transform = "translate(-50%, 30%)";
+    }, 11000);
+    setTimeout(function() {
+        picElement.style.transform = "translate(-50%, -50%)";
+        nameElement.style.transform = "translate(-50%, -50%)";
+        nameElement.style.opacity = 0;
+        picElement.style.border = "5px solid #471b8e";
+    }, 16000);
+    setTimeout(function() {
+        picElement.style.border = "5px double #59a3ed";
+        picElement.style.boxShadow = "0 0 10px 5px #471b8e";
+        nameElement.style.display = "none";
+    }, 18000);
+    setTimeout(function() {
+        picElement.addEventListener("click", function() {
+    // Your onclick function logic goes here
+    console.log("Image clicked!");
+    picButton();
+    picElement.removeEventListener("click", arguments.callee); //remove event listener
+});
+    }, 18500);
+}
+
+function picButton() {
+    setTimeout(function() {
+        picElement.style.transition = "all 5s ease";
+        picElement.style.boxShadow = "0 0 0 1000px #471b8e";
+    }, 0);
+    setTimeout(function() {
+        document.body.style.background = "radial-gradient(circle, #000077, #000000) no-repeat center center fixed";
+    }, 2000);
+    setTimeout(function() {
+        picElement.style.opacity = 0;
+    }, 3000);
+}
+
+
+displayText();
+
+</script>
 </body>
 </html>
