@@ -72,28 +72,44 @@
         opacity: 0;
         transition: all 1s;
     }
+    img.welcome-image {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        transition: transform 2s ease-in;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-bottom: 1000px solid black;
+        transform: translate(0, -50px);
+    }
     </style>
 </head>
 
 <body id="body">
 
+    <img src="welcomeImg.png" class="welcome-image" id="welcomeImage" alt="wlcmIMG" draggable="false">
+
+    <audio id="bgAudio" style="display: none;">
+        <source src="back_audio.mp3" type="audio/mpeg">
+    </audio>
+
 <div id="msg" class="message"></div>
-<img id="profilePic" class="pic" src="pic.png" draggable="false" contextmenu="false">
+<img id="profilePic" class="pic" src="pic.png" draggable="false" contextmenu="false" alt="PP">
 <div id="name" class="nam">DragoXme</div>
 
-<audio autoplay style="display: none;">
-    <source src="back_audio.mp3" type="audio/mpeg">
-</audio>
 <script>
 var msgElement = document.getElementById('msg');
-var textValues = ["Hi", "it's me"];
+var textValues = [" ", "Hi", "I", "m", "'"];
 var picElement = document.getElementById('profilePic');
 var nameElement = document.getElementById('name');
 var bodyElement = document.getElementById('body');
+var bgAudioElement = document.getElementById('bgAudio');
+var welcomeImage = document.getElementById('welcomeImage');
 
 function displayText() {
     setTimeout(function() {
-        msgElement.textContent = textValues[0];
+        msgElement.textContent = textValues[1];
         msgElement.style.transition = "all 1s";
         msgElement.style.opacity = 1;
     }, 1000);
@@ -103,46 +119,58 @@ function displayText() {
     }, 3000);
 
     setTimeout(function() {
-        msgElement.textContent = textValues[1];
+        msgElement.textContent = textValues[2];
         msgElement.style.opacity = 1;
     }, 5000);
     setTimeout(function() {
+        msgElement.textContent = textValues[2] + textValues[3];
+        welcomeImage.style.display = "none";
+    }, 6000);
+       setTimeout(function() {
+        msgElement.textContent = textValues[2] + textValues[4] + textValues[3];
+       }, 6700);
+       setTimeout(function() {
+        msgElement.textContent = textValues[2] + textValues[4] + textValues[3] + ".";
+       }, 8000);
+       setTimeout(function() {
+        msgElement.textContent = textValues[2] + textValues[4] + textValues[3] + ".."
+       }, 8200);
+       setTimeout(function() {
+        msgElement.textContent = textValues[2] + textValues[4] + textValues[3] + "..."
+       }, 8400);
+    setTimeout(function() {
         msgElement.style.opacity = 0;
         picElement.style.display = "block";
-    }, 7000);
+    }, 10000);
     setTimeout(function() {
         msgElement.style.display = "none";
+        msgElement.textContent = null;
         picElement.style.transform = "translate(-50%, -50%)";
         picElement.style.opacity = 1;
-    }, 9000);
+    }, 12000);
     setTimeout(function() {
         picElement.style.transform = "translate(-50%, -90%)";
         picElement.style.border = "5px solid #59a3ed"
         nameElement.style.opacity = 1;
         nameElement.style.transform = "translate(-50%, 30%)";
-    }, 11000);
+    }, 14000);
     setTimeout(function() {
         picElement.style.transform = "translate(-50%, -50%)";
         nameElement.style.transform = "translate(-50%, -50%)";
         nameElement.style.opacity = 0;
-        picElement.style.border = "5px solid #471b8e";
-    }, 16000);
+    }, 19000);
     setTimeout(function() {
-        picElement.style.border = "5px double #59a3ed";
+        picElement.style.border = "5px solid #471b8e";
         picElement.style.boxShadow = "0 0 10px 5px #471b8e";
         nameElement.style.display = "none";
-    }, 18000);
+    }, 19050);
     setTimeout(function() {
-        picElement.addEventListener("click", function() {
-    // Your onclick function logic goes here
-    console.log("Image clicked!");
-    picButton();
-    picElement.removeEventListener("click", arguments.callee); //remove event listener
-});
-    }, 18500);
+        picButton();
+    }, 21000);
 }
 
 function picButton() {
+
     setTimeout(function() {
         picElement.style.transition = "all 5s ease";
         picElement.style.boxShadow = "0 0 0 1000px #471b8e";
@@ -151,13 +179,30 @@ function picButton() {
         document.body.style.background = "radial-gradient(circle, #000077, #000000) no-repeat center center fixed";
     }, 2000);
     setTimeout(function() {
+        picElement.style.boxShadow = "0 0 0 0 #471b8e";
+        picElement.style.transition = "box-shadow 2s";
+    }, 2500);
+    setTimeout(function() {
+        picElement.style.transition = "all 2s";
         picElement.style.opacity = 0;
     }, 3000);
+    setTimeout(function() {
+        picElement.style.display = "none";
+    }, 5000);
 }
 
 
-displayText();
 
+//event listner for welcome image
+document.addEventListener("click", function() {
+    // Your onclick function logic goes here
+    console.log("Welcome!");
+    welcomeImage.style.transform = "translate(0, 5000px)";
+    bgAudioElement.play();
+    console.log('played!');
+    displayText();
+    welcomeImage.removeEventListener("click", arguments.callee); //remove event listener
+});
 </script>
 </body>
 </html>
