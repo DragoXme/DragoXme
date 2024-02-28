@@ -71,6 +71,7 @@
         background-size: 150% 100%;
         opacity: 0;
         transition: all 1s;
+        font-weight: bold;
     }
     img.welcome-image {
         width: 100%;
@@ -83,12 +84,23 @@
         border-bottom: 1000px solid black;
         transform: translate(0, -50px);
     }
+    img.welcome-lines {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        transition: transform 2s ease-in-out;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(0, 100%);
+    }
     </style>
 </head>
 
 <body id="body">
 
     <img src="welcomeImg.png" class="welcome-image" id="welcomeImage" alt="wlcmIMG" draggable="false">
+    <img src="lines.png" class="welcome-lines" id="welcomeLines" alt="wlcmLines" draggable="false">
 
     <audio id="bgAudio" style="display: none;">
         <source src="back_audio.mp3" type="audio/mpeg">
@@ -100,12 +112,15 @@
 
 <script>
 var msgElement = document.getElementById('msg');
-var textValues = [" ", "Hi", "I", "m", "'"];
+var textValues = [" ", "Hi", "I", "m", "'", "Well...", "Thanks for watching.", "This is end but there could be more", "With your help", "Join today!", "Our pricing are normal", "Starting from just", "1000$/month ONLY", "..", ".....", "...", "........", "XD"];
+var typingSpeed = 70; // Adjust typing speed as needed (milliseconds per character)
+var typingInterval;
 var picElement = document.getElementById('profilePic');
 var nameElement = document.getElementById('name');
 var bodyElement = document.getElementById('body');
 var bgAudioElement = document.getElementById('bgAudio');
 var welcomeImage = document.getElementById('welcomeImage');
+var welcomeLines = document.getElementById('welcomeLines');
 
 function displayText() {
     setTimeout(function() {
@@ -121,52 +136,55 @@ function displayText() {
     setTimeout(function() {
         msgElement.textContent = textValues[2];
         msgElement.style.opacity = 1;
-    }, 5000);
+    }, 6000);
     setTimeout(function() {
         msgElement.textContent = textValues[2] + textValues[3];
         welcomeImage.style.display = "none";
-    }, 6000);
+    }, 7000);
        setTimeout(function() {
         msgElement.textContent = textValues[2] + textValues[4] + textValues[3];
-       }, 6700);
+       }, 7700);
        setTimeout(function() {
         msgElement.textContent = textValues[2] + textValues[4] + textValues[3] + ".";
-       }, 8000);
+       }, 9000);
        setTimeout(function() {
         msgElement.textContent = textValues[2] + textValues[4] + textValues[3] + ".."
-       }, 8200);
+       }, 9200);
        setTimeout(function() {
         msgElement.textContent = textValues[2] + textValues[4] + textValues[3] + "..."
-       }, 8400);
+       }, 9400);
     setTimeout(function() {
         msgElement.style.opacity = 0;
         picElement.style.display = "block";
-    }, 10000);
+    }, 11000);
     setTimeout(function() {
         msgElement.style.display = "none";
         msgElement.textContent = null;
         picElement.style.transform = "translate(-50%, -50%)";
         picElement.style.opacity = 1;
-    }, 12000);
+        welcomeLines.style.transform = "translate(0, -50%)";
+    }, 14000);
     setTimeout(function() {
         picElement.style.transform = "translate(-50%, -90%)";
         picElement.style.border = "5px solid #59a3ed"
         nameElement.style.opacity = 1;
         nameElement.style.transform = "translate(-50%, 30%)";
-    }, 14000);
+        welcomeLines.style.transform = "translate(0, -70%)";
+    }, 16000);
     setTimeout(function() {
         picElement.style.transform = "translate(-50%, -50%)";
         nameElement.style.transform = "translate(-50%, -50%)";
         nameElement.style.opacity = 0;
-    }, 19000);
+        welcomeLines.style.transform = "translate(0, 100%)";
+    }, 21000);
     setTimeout(function() {
         picElement.style.border = "5px solid #471b8e";
         picElement.style.boxShadow = "0 0 10px 5px #471b8e";
         nameElement.style.display = "none";
-    }, 19050);
+    }, 22050);
     setTimeout(function() {
         picButton();
-    }, 21000);
+    }, 23000);
 }
 
 function picButton() {
@@ -188,21 +206,126 @@ function picButton() {
     }, 3000);
     setTimeout(function() {
         picElement.style.display = "none";
+        welcomeLines.style.transition = "transform 31s ease-in-out"
+        welcomeLines.style.transform = "translate(0, -100%)";
+        endingWords();
     }, 5000);
+}
+function endingWords() {
+    setTimeout(function() {
+        typeText(5);
+    }, 1000);
+    setTimeout(function() {
+        msgElement.style.display = "block";
+        msgElement.style.opacity = 1;
+        msgElement.style.textAlign = "center";
+    }, 1000);
+    setTimeout(function() {
+        typeText(6);
+    }, 5000);
+    setTimeout(function() {
+        typeText(7);
+    }, 7000);
+    setTimeout(function() {
+        typeText(8);
+    }, 10000);
+    setTimeout(function() {
+        typeText(9);
+    }, 12000);
+    setTimeout(function() {
+        typeText(10);
+    }, 15000);
+    setTimeout(function() {
+        typeText(11);
+    }, 17000);
+    setTimeout(function() {
+        typeText(12);
+    }, 17000);
+    setTimeout(function() {
+        typeText(13);
+    }, 21000);
+    setTimeout(function() {
+        typeText(14);
+    }, 22000);
+    setTimeout(function() {
+        typeText(15);
+    }, 23000);
+    setTimeout(function() {
+        typeText(16);
+    }, 24000);
+    setTimeout(function() {
+        typeText(17);
+        msgElement.style.fontFamily = "courier";
+        msgElement.style.fontSize = "18vh";
+        msgElement.style.fontWeight = "bold";
+        decreaseVolume(6);
+    }, 25000);
+    setTimeout(function() {
+        bgAudioElement.pause();
+        if (document.fullscreenElement) {
+    document.exitFullscreen();
+}
+    }, 31000);
+}
+
+
+//event listner for welcome image
+function clickHandler() {
+    console.log("Welcome!");
+    document.documentElement.requestFullscreen();
+    setTimeout(function() {
+    welcomeImage.style.transform = "translate(0, 5000px)";
+    bgAudioElement.play();
+    console.log('played!');
+    }, 500);
+    displayText();
+    
+    document.removeEventListener("click", clickHandler); //remove event listener
+}
+
+
+document.addEventListener("click", clickHandler); //event listener for welcome screen.
+
+
+// fade volume effect
+function decreaseVolume(durationInSeconds) {
+    var startVolume = bgAudioElement.volume;
+    var volumeChangePerMs = startVolume / (durationInSeconds * 1000);
+    var startTime = performance.now();
+
+    function updateVolume() {
+        var elapsedTime = performance.now() - startTime;
+        var newVolume = Math.max(0, startVolume - volumeChangePerMs * elapsedTime);
+        bgAudioElement.volume = newVolume;
+        if (newVolume > 0) {
+            requestAnimationFrame(updateVolume);
+        }
+    }
+
+    requestAnimationFrame(updateVolume);
 }
 
 
 
-//event listner for welcome image
-document.addEventListener("click", function() {
-    // Your onclick function logic goes here
-    console.log("Welcome!");
-    welcomeImage.style.transform = "translate(0, 5000px)";
-    bgAudioElement.play();
-    console.log('played!');
-    displayText();
-    welcomeImage.removeEventListener("click", arguments.callee); //remove event listener
-});
+//type
+function typeText(index) {
+    var currentText = textValues[index];
+    msgElement.textContent = ''; // Clear previous text
+    var i = 0;
+
+    // Clear previous interval if exists
+    clearInterval(typingInterval);
+
+    typingInterval = setInterval(function() {
+      if (i < currentText.length) {
+        msgElement.textContent += currentText.charAt(i);
+        i++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, typingSpeed);
+  }
+
 </script>
 </body>
 </html>
