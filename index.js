@@ -251,7 +251,14 @@ function endingWords() {
         document.getElementById("instagram").style.transform = "translate(-50%, 0)";
         document.getElementById("twitter").style.transform = "translate(0, 50%)";
         document.getElementById("pinterest").style.transform = "translate(0, 50%)";
+        decreaseVolume(5);
     }, 2000);
+    setTimeout(() => {
+        bgAudioElement.pause();
+        if (document.fullscreenElement) {
+    document.exitFullscreen();
+}
+    }, 7000);
 }
 /*
 function textBubbles() {
