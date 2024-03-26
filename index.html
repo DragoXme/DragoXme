@@ -155,6 +155,41 @@
         transform: translate(0, 200%);
         transition: transform 0.5s ease;
     }
+    img.accountImage {
+        position: absolute;
+        height: 100px;
+        width: auto;
+        border-radius: 50%;
+        background-color: #013DEF;
+        padding: 10px;
+        transition: transform 1s ease;
+        cursor: pointer;
+        filter: grayscale(50%);
+    }
+    img.accountImage:hover {
+        filter: none;;
+    }
+    #youtube {
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -500%);
+    }
+    #instagram {
+        bottom: 10%;
+        left: 50%;
+        transform: translate(-50%, 500%);
+    }
+    #twitter {
+        bottom: 50%;
+        left: 10%;
+        transform: translate(-500%, 50%);
+    }
+    #pinterest {
+        bottom: 50%;
+        right: 10%;
+        transform: translate(500%, 50%);
+    }
+    
     </style>
 </head>
 
@@ -180,6 +215,10 @@
     <p class="bubble-text" id="bubbleText5">What do I like to watcing?</p> <!--Anime!! Let's gooo!-->
     <p class="bubble-text" id="bubbleText6">How do I spend my free time?</p> <!--Free time Sleeping likely :)-->
 </div>
+    <img class="accountImage" alt="YT" id="youtube" src="img/youtube.png" onclick="window.location.href = 'https://www.youtube.com/@DragoXme';">
+    <img class="accountImage" alt="IG" id="instagram" src="img/instagram.png" onclick="window.location.href = 'https://www.instagram.com/dragoxme';">
+    <img class="accountImage" alt="X" id="twitter" src="img/twitter.png" onclick="window.location.href = 'https://www.twitter.com/DragoXme';">
+    <img class="accountImage" alt="Pinterest" id="pinterest" src="img/pinterest.png" onclick="window.location.href = 'https://www.pinterest.com/DragoXme';">
 
 <script src="index.js"></script>
 </body>

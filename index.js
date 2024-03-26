@@ -80,6 +80,7 @@ function displayText() {
         nameElement.style.opacity = 1;
         nameElement.style.transform = "translate(-50%, 30%)";
         welcomeLines.style.transform = "translate(0, -70%)";
+        welcomeLines.style.transition = "transform 8s ease";
     }, 16000);
     setTimeout(function() {
         picElement.style.transform = "translate(-50%, -50%)";
@@ -117,7 +118,7 @@ function picButton() {
     }, 3000);
     setTimeout(function() {
         picElement.style.display = "none";
-        welcomeLines.style.transition = "transform 31s ease-in-out"
+        welcomeLines.style.transition = "transform 31s ease-in-out";
         welcomeLines.style.transform = "translate(0, -100%)";
         textBubbles();
     }, 5000);
@@ -175,28 +176,42 @@ function textBubbles() {
 function answerFunction() {
     setTimeout(() => {
         typeText(bubbleAnswer[0], bubbleP[0]);
+        bubbleP[0].style.backgroundColor = "#00134d";
+        bubbleP[0].style.backgroundImage = "none";
     }, 1000);
     setTimeout(() => {
         typeText(bubbleAnswer[1], bubbleP[1]);
+        bubbleP[1].style.backgroundColor = "#00134d";
+        bubbleP[1].style.backgroundImage = "none";
     }, 1500);
     setTimeout(() => {
         typeText(bubbleAnswer[2], bubbleP[2]);
+        bubbleP[2].style.backgroundColor = "#00134d";
+        bubbleP[2].style.backgroundImage = "none";
     }, 2000);
     setTimeout(() => {
         typeText(bubbleAnswer[3], bubbleP[3]);
+        bubbleP[3].style.backgroundColor = "#00134d";
+        bubbleP[3].style.backgroundImage = "none";
     }, 2500);
     setTimeout(() => {
         typeText(bubbleAnswer[4], bubbleP[4]);
+        bubbleP[4].style.backgroundColor = "#00134d";
+        bubbleP[4].style.backgroundImage = "none";
     }, 3000);
     setTimeout(() => {
         typeText(bubbleAnswer[5], bubbleP[5]);
+        bubbleP[5].style.backgroundColor = "#00134d";
+        bubbleP[5].style.backgroundImage = "none";
     }, 3500);
     setTimeout(() => {
         typeText(bubbleAnswer[6], bubbleP[6]);
+        bubbleP[6].style.backgroundColor = "#00134d";
+        bubbleP[6].style.backgroundImage = "none";
     }, 4000);
     setTimeout(() => {
         removeBubble();
-    }, 5000);
+    }, 6000);
 }
 function removeBubble() {
     setTimeout(() => {
@@ -220,6 +235,23 @@ function removeBubble() {
     setTimeout(() => {
         bubbleP[6].style.transform = "translate(-200%, 0)";
     }, 1600);
+    setTimeout(() => {
+        endingWords();
+        picElement.style.display = "block";
+        picElement.style.transform = "translate(-50%, -70%)";
+    }, 2600);
+}
+function endingWords() {
+    setTimeout(() => {
+        picElement.style.opacity = "1";
+        picElement.style.transform = "translate(-50%, -50%)";
+    }, 1000);
+    setTimeout(() => {
+        document.getElementById("youtube").style.transform = "translate(-50%, 0)";
+        document.getElementById("instagram").style.transform = "translate(-50%, 0)";
+        document.getElementById("twitter").style.transform = "translate(0, 50%)";
+        document.getElementById("pinterest").style.transform = "translate(0, 50%)";
+    }, 2000);
 }
 /*
 function textBubbles() {
