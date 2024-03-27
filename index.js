@@ -426,3 +426,8 @@ function displayAccountsImage() {
     document.getElementById("twitter").style.display = "block";
     document.getElementById("pinterest").style.display = "block";
 }
+
+window.onbeforeunload = function() {
+    // Append a timestamp as a query parameter to force a fresh load
+    window.location.href = window.location.pathname + '?t=' + new Date().getTime();
+};
