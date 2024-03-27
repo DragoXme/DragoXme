@@ -1,6 +1,6 @@
 var msgElement = document.getElementById('msg');
 var textValues = [" ", "Hi", "I", "m", "'"];
-var typingSpeed = 20; // Adjust typing speed as needed (milliseconds per character)
+var typingSpeed = 0; // Adjust typing speed as needed (milliseconds per character)
 var typingInterval;
 var picElement = document.getElementById('profilePic');
 var nameElement = document.getElementById('name');
@@ -120,6 +120,13 @@ function picButton() {
         picElement.style.display = "none";
         welcomeLines.style.transition = "transform 31s ease-in-out";
         welcomeLines.style.transform = "translate(0, -100%)";
+        bubbleP[0].style.display = "block";
+        bubbleP[1].style.display = "block";
+        bubbleP[2].style.display = "block";
+        bubbleP[3].style.display = "block";
+        bubbleP[4].style.display = "block";
+        bubbleP[5].style.display = "block";
+        bubbleP[6].style.display = "block";
         textBubbles();
     }, 5000);
 }
@@ -176,39 +183,55 @@ function textBubbles() {
 function answerFunction() {
     setTimeout(() => {
         typeText(bubbleAnswer[0], bubbleP[0]);
+        bubbleP[0].style.transform = "translate(-50%, -900%)";
         bubbleP[0].style.backgroundColor = "#00134d";
         bubbleP[0].style.backgroundImage = "none";
     }, 1000);
     setTimeout(() => {
         typeText(bubbleAnswer[1], bubbleP[1]);
         bubbleP[1].style.backgroundColor = "#00134d";
+        bubbleP[0].style.transform = "translate(2%, -900%)";
+        bubbleP[1].style.transform = "translate(50%, -750%)";
         bubbleP[1].style.backgroundImage = "none";
     }, 1500);
     setTimeout(() => {
         typeText(bubbleAnswer[2], bubbleP[2]);
         bubbleP[2].style.backgroundColor = "#00134d";
+        bubbleP[1].style.transform = "translate(-2%, -750%)";
+        bubbleP[2].style.transform = "translate(-50%, -600%)";
         bubbleP[2].style.backgroundImage = "none";
     }, 2000);
     setTimeout(() => {
         typeText(bubbleAnswer[3], bubbleP[3]);
         bubbleP[3].style.backgroundColor = "#00134d";
+        bubbleP[2].style.transform = "translate(2%, -600%)";
+        bubbleP[3].style.transform = "translate(50%, -450%)";
         bubbleP[3].style.backgroundImage = "none";
     }, 2500);
     setTimeout(() => {
         typeText(bubbleAnswer[4], bubbleP[4]);
         bubbleP[4].style.backgroundColor = "#00134d";
+        bubbleP[3].style.transform = "translate(-2%, -450%)";
+        bubbleP[4].style.transform = "translate(-50%, -300%)";
         bubbleP[4].style.backgroundImage = "none";
     }, 3000);
     setTimeout(() => {
         typeText(bubbleAnswer[5], bubbleP[5]);
         bubbleP[5].style.backgroundColor = "#00134d";
+        bubbleP[4].style.transform = "translate(2%, -300%)";
+        bubbleP[5].style.transform = "translate(50%, -150%)";
         bubbleP[5].style.backgroundImage = "none";
     }, 3500);
     setTimeout(() => {
         typeText(bubbleAnswer[6], bubbleP[6]);
         bubbleP[6].style.backgroundColor = "#00134d";
+        bubbleP[5].style.transform = "translate(-2%, -150%)";
+        bubbleP[6].style.transform = "translate(-50%, 0)";
         bubbleP[6].style.backgroundImage = "none";
     }, 4000);
+    setTimeout(() => {
+        bubbleP[6].style.transform = "translate(2%, 0)";
+    }, 4500);
     setTimeout(() => {
         removeBubble();
     }, 6000);
@@ -237,8 +260,17 @@ function removeBubble() {
     }, 1600);
     setTimeout(() => {
         endingWords();
+        
         picElement.style.display = "block";
+        picElement.style.transition = "opacity 1s"
         picElement.style.transform = "translate(-50%, -70%)";
+        bubbleP[0].style.display = "none";
+        bubbleP[1].style.display = "none";
+        bubbleP[2].style.display = "none";
+        bubbleP[3].style.display = "none";
+        bubbleP[4].style.display = "none";
+        bubbleP[5].style.display = "none";
+        bubbleP[6].style.display = "none";
     }, 2600);
 }
 function endingWords() {
@@ -247,18 +279,28 @@ function endingWords() {
         picElement.style.transform = "translate(-50%, -50%)";
     }, 1000);
     setTimeout(() => {
-        document.getElementById("youtube").style.transform = "translate(-50%, 0)";
-        document.getElementById("instagram").style.transform = "translate(-50%, 0)";
-        document.getElementById("twitter").style.transform = "translate(0, 50%)";
-        document.getElementById("pinterest").style.transform = "translate(0, 50%)";
-        decreaseVolume(5);
+        displayAccountsImage();
     }, 2000);
+    setTimeout(() => {
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            document.getElementById("youtube").style.transform = "translate(-50%, calc(-120px - 50%))";
+            document.getElementById("instagram").style.transform = "translate(-50%, calc(120px - 50%))";
+            document.getElementById("twitter").style.transform = "translate(calc(-120px - 50%), -50%)";
+            document.getElementById("pinterest").style.transform = "translate(calc(120px - 50%), -50%)";
+        } else {
+            document.getElementById("youtube").style.transform = "translate(-50%, calc(-200px - 50%))";
+            document.getElementById("instagram").style.transform = "translate(-50%, calc(200px - 50%))";
+            document.getElementById("twitter").style.transform = "translate(calc(-200px - 50%), -50%)";
+            document.getElementById("pinterest").style.transform = "translate(calc(200px - 50%), -50%)";
+        }
+        decreaseVolume(5);
+    }, 3000);
     setTimeout(() => {
         bgAudioElement.pause();
         if (document.fullscreenElement) {
     document.exitFullscreen();
 }
-    }, 7000);
+    }, 8000);
 }
 /*
 function textBubbles() {
@@ -375,4 +417,12 @@ function typeText(index, textField) {
             clearInterval(textField.typingInterval); // Clear the interval associated with this textField
         }
     }, typingSpeed);
+}
+
+//display account images
+function displayAccountsImage() {
+    document.getElementById("youtube").style.display = "block";
+    document.getElementById("instagram").style.display = "block";
+    document.getElementById("twitter").style.display = "block";
+    document.getElementById("pinterest").style.display = "block";
 }
