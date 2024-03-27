@@ -29,15 +29,20 @@ var bubbleAnswer = [
     "Free time Sleeping likely :)"
 ];
 
+window.onload = function() {
+    setTimeout(function() {
+        window.scrollTo(0, 0);
+    }, 20);
+};
 
 
 function displayText() {
+    
     setTimeout(function() {
         msgElement.textContent = textValues[1];
         msgElement.style.transition = "all 1s";
         msgElement.style.opacity = 1;
-        console.log("displayText()");
-        window.scrollTo(0, 0); //scroll to default view
+        console.log("displayText()"); //scroll to default view
     }, 1000);
 
     setTimeout(function() {
