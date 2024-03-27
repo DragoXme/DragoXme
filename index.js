@@ -37,6 +37,7 @@ function displayText() {
         msgElement.style.transition = "all 1s";
         msgElement.style.opacity = 1;
         console.log("displayText()");
+        window.scrollTo(0, 0); //scroll to default view
     }, 1000);
 
     setTimeout(function() {
@@ -426,8 +427,3 @@ function displayAccountsImage() {
     document.getElementById("twitter").style.display = "block";
     document.getElementById("pinterest").style.display = "block";
 }
-
-window.onbeforeunload = function() {
-    // Append a timestamp as a query parameter to force a fresh load
-    window.location.href = window.location.pathname + '?t=' + new Date().getTime();
-};
