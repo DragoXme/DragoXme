@@ -21,12 +21,12 @@ var bubbleP = [
 ];
 var bubbleAnswer = [
     "I'm a hooman.",
-    "No hobbies, just sleepin",
-    "I like Something...",
-    "I'm 18+",
-    "From India",
+    "IDK",
+    "Dogs",
+    "Secret",
+    "From India, ofc!",
     "Anime!! Let's gooo!",
-    "Free time Sleeping likely :)"
+    "Playing lol"
 ];
 
 window.onload = function() {
