@@ -290,14 +290,14 @@ function endingWords() {
     setTimeout(() => {
         if (window.matchMedia("(orientation: portrait)").matches) {
             document.getElementById("youtube").style.transform = "translate(-50%, calc(-120px - 50%))";
-            document.getElementById("linkedin").style.transform = "translate(-50%, calc(120px - 50%))";
+            document.getElementById("instagram").style.transform = "translate(-50%, calc(120px - 50%))";
             document.getElementById("twitter").style.transform = "translate(calc(-120px - 50%), -50%)";
-            document.getElementById("pinterest").style.transform = "translate(calc(120px - 50%), -50%)";
+            document.getElementById("linkedin").style.transform = "translate(calc(120px - 50%), -50%)";
         } else {
             document.getElementById("youtube").style.transform = "translate(-50%, calc(-200px - 50%))";
-            document.getElementById("linkedin").style.transform = "translate(-50%, calc(200px - 50%))";
+            document.getElementById("instagram").style.transform = "translate(-50%, calc(200px - 50%))";
             document.getElementById("twitter").style.transform = "translate(calc(-200px - 50%), -50%)";
-            document.getElementById("pinterest").style.transform = "translate(calc(200px - 50%), -50%)";
+            document.getElementById("linkedin").style.transform = "translate(calc(200px - 50%), -50%)";
         }
         decreaseVolume(5);
     }, 3000);
@@ -428,7 +428,7 @@ function typeText(index, textField) {
 //display account images
 function displayAccountsImage() {
     document.getElementById("youtube").style.display = "block";
-    document.getElementById("linkedin").style.display = "block";
+    document.getElementById("instagram").style.display = "block";
     document.getElementById("twitter").style.display = "block";
-    document.getElementById("pinterest").style.display = "block";
+    document.getElementById("linkedin").style.display = "block";
 }
